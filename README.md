@@ -1,6 +1,13 @@
+<picture>
+	<source media="(prefers-color-scheme: dark)" srcset=".github/assets/sohedra-lockup-dark.svg">
+	<img alt="Sohedra" src=".github/assets/sohedra-lockup.svg" height="48">
+</picture>
+
 # Sohedra UI
 
-Accessible components for Svelte, part of the Sohedra ecosystem.
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/sohedra/ui/badge)](https://scorecard.dev/viewer/?uri=github.com/sohedra/ui)
+
+Headless, accessible components for Svelte 5. Inspired by [Base UI](https://base-ui.com).
 
 > **Status: early development.** Nothing is published yet.
 
