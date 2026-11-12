@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Jobs get no token permissions unless they ask for them.
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint and format
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Installs pnpm and Node.js from devEngines in package.json, then runs pnpm install.
+      - uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
+        with:
+          cache: true
+          require-lockfile: true
+      - run: pnpm lint
+      - run: pnpm format:check
+
+  workflows:
+    name: Workflow security
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      # Renovate updates this from the comment (customManagers:githubActionsVersions).
+      # renovate: datasource=pypi depName=zizmor
+      ZIZMOR_VERSION: 1.32.0
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Static analysis of .github/workflows. Findings fail the job and print in the log.
+      - uses: zizmorcore/zizmor-action@45d7276c9ca790aabd705e31ca99c6185c3e76dd # v0.8.1
+        with:
+          advanced-security: false
+          version: ${{ env.ZIZMOR_VERSION }}

@@ -1,0 +1,35 @@
+{
+	"name": "@sohedra/ui-monorepo",
+	"private": true,
+	"description": "Sohedra UI monorepo: accessible, headless Svelte components",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sohedra/ui.git"
+	},
+	"type": "module",
+	"scripts": {
+		"lint": "oxlint --no-error-on-unmatched-pattern",
+		"lint:fix": "oxlint --fix --no-error-on-unmatched-pattern",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check"
+	},
+	"devDependencies": {
+		"oxfmt": "^0.78.0",
+		"oxlint": "^1.93.0",
+		"oxlint-tsgolint": "^7.0.2006"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "^12.18.0",
+			"onFail": "warn"
+		},
+		"runtime": {
+			"name": "node",
+			"version": "^26.13.0",
+			"onFail": "error"
+		}
+	},
+	"packageManager": "pnpm@12.18.0"
+}

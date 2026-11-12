@@ -1,0 +1,24 @@
+.DS_Store
+node_modules/
+*.tsbuildinfo
+coverage/
+
+# SvelteKit and svelte-package output
+.svelte-kit/
+dist/
+vite.config.*.timestamp-*
+
+# Vitest failure screenshots
+.vitest/
+
+# Cloudflare (docs)
+.wrangler/
+
+# Environment files: commit only the example
+.env
+.env.*
+!.env.example
+
+# Personal Claude Code settings and agent worktrees
+.claude/settings.local.json
+.claude/worktrees/

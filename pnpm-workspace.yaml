@@ -1,0 +1,10 @@
+packages:
+  - packages/*
+  - docs
+  - playgrounds/*
+
+engineStrict: true
+
+# Refuse a release that is published with weaker trust than an earlier one (for example, without
+# provenance after releases that had it): the pattern of a hijacked maintainer account.
+trustPolicy: no-downgrade

@@ -1,0 +1,93 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": ["import", "oxc", "typescript", "unicorn", "vitest"],
+	"categories": {
+		"correctness": "error",
+	},
+	"options": {
+		"denyWarnings": true,
+		"reportUnusedDisableDirectives": "error",
+		"typeAware": true,
+	},
+	"rules": {
+		// Bugs
+		"array-callback-return": "error",
+		"eqeqeq": ["error", "smart"],
+		"no-self-compare": "error",
+		"no-template-curly-in-string": "error",
+		"typescript/no-misused-promises": "error",
+
+		// Unused and outdated code
+		"no-unused-vars": [
+			"error",
+			{
+				"argsIgnorePattern": "^_",
+				"ignoreRestSiblings": true,
+				"varsIgnorePattern": "^_",
+			},
+		],
+		"no-var": "error",
+		"prefer-const": "error",
+
+		// TypeScript
+		"typescript/ban-ts-comment": "error",
+		"typescript/no-explicit-any": "error",
+
+		// Imports
+		"import/no-cycle": "error",
+		"import/no-duplicates": "error",
+		"import/no-mutable-exports": "error",
+		"import/no-self-import": "error",
+		"typescript/consistent-type-imports": "error",
+		"typescript/no-import-type-side-effects": "error",
+
+		// Strict CSP: no code built from strings
+		"no-new-func": "error",
+		"no-script-url": "error",
+
+		// Tests: Base UI's rules, since our tests are ports of its tests
+		"vitest/expect-expect": [
+			"error",
+			{
+				"assertFunctionNames": [
+					"assert*",
+					"expect",
+					"expect*",
+					"matchesFixture",
+					"waitForBubbleToOverlapActiveTab",
+				],
+			},
+		],
+		"vitest/no-commented-out-tests": "error",
+		"vitest/no-identical-title": "error",
+		"vitest/no-import-node-test": "error",
+		"vitest/no-interpolation-in-snapshots": "error",
+		"vitest/no-mocks-import": "error",
+		"vitest/no-unneeded-async-expect-function": "error",
+		"vitest/prefer-called-exactly-once-with": "error",
+
+		// TypeScript already checks namespace members; this only adds false alarms on `entry[name]`
+		"import/namespace": "off",
+		// False alarms on methods that use closures, not `this`
+		"typescript/unbound-method": "off",
+		// Shared conformance suites branch on their options; Base UI doesn't use it either
+		"vitest/no-conditional-tests": "off",
+		// Would require type parameters on every `vi.fn()`
+		"vitest/require-mock-type-parameters": "off",
+	},
+	"overrides": [
+		{
+			"files": ["packages/*/src/**"],
+			"rules": {
+				"no-console": "error",
+			},
+		},
+		{
+			// Type tests check types at compile time and have nothing to assert at runtime
+			"files": ["packages/*/tests/types/**"],
+			"rules": {
+				"vitest/expect-expect": "off",
+			},
+		},
+	],
+}

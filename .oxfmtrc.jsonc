@@ -1,0 +1,19 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"useTabs": true,
+	"proseWrap": "always",
+	"sortImports": true,
+	"svelte": true,
+	"overrides": [
+		{
+			// YAML forbids tabs; GitHub shows them eight wide in Markdown
+			"files": ["*.md", "*.yml", "*.yaml"],
+			"options": { "useTabs": false },
+		},
+		{
+			// Issue and pull request bodies keep single line breaks
+			"files": [".github/**/*.md"],
+			"options": { "proseWrap": "preserve" },
+		},
+	],
+}
