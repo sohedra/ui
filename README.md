@@ -1,9 +1,10 @@
-<picture>
-	<source media="(prefers-color-scheme: dark)" srcset=".github/assets/sohedra-lockup-dark.svg">
-	<img alt="Sohedra" src=".github/assets/sohedra-lockup.svg" height="48">
-</picture>
-
-# Sohedra UI
+<h1>
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset=".github/assets/sohedra-mark-dark.svg">
+		<img alt="" src=".github/assets/sohedra-mark.svg" height="32">
+	</picture>
+	Sohedra UI
+</h1>
 
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/sohedra/ui/badge)](https://scorecard.dev/viewer/?uri=github.com/sohedra/ui)
 
