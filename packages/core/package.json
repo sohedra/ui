@@ -1,0 +1,17 @@
+{
+	"name": "@sohedra/core",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Framework-agnostic logic shared by Sohedra UI components",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sohedra/ui.git",
+		"directory": "packages/core"
+	},
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": "./src/index.ts"
+	}
+}

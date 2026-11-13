@@ -33,6 +33,7 @@ Run these before opening a pull request. CI runs the same checks.
 ```sh
 pnpm lint
 pnpm format:check
+pnpm test
 ```
 
 `pnpm lint:fix` and `pnpm format` fix most problems automatically.

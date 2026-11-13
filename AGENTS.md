@@ -8,6 +8,7 @@ Run from the repository root before a change lands:
 
 - `pnpm lint` (0 warnings)
 - `pnpm format:check`
+- `pnpm test`
 
 ## Git
 
